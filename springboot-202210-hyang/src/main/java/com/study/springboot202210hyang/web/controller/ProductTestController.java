@@ -1,6 +1,6 @@
 package com.study.springboot202210hyang.web.controller;
 
-import com.study.springboot202210hyang.dto.ProductDto;
+import com.study.springboot202210hyang.web.dto.ProductDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

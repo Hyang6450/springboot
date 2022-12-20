@@ -1,6 +1,6 @@
 package com.study.springboot202210hyang.web.controller;
 
-import com.study.springboot202210hyang.dto.RequestStudyDto;
+import com.study.springboot202210hyang.web.dto.RequestStudyDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
