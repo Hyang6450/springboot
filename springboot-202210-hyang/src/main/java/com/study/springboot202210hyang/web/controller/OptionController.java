@@ -16,12 +16,13 @@ public class OptionController {
     private OptionService optionService;
 
     @PostMapping("/category")
-    public ResponseEntity<?> addCategory(@RequestBody CategoryDto categoryDto) {
+    public ResponseEntity<?> addCategory(@RequestBody CategoryDto categoryDto) { // @RequestBody가 있는 이유는 데이터를 JSON형태로 받기 때문이다.
+
         return ResponseEntity
-                .created(URI.create("/api/option/category"+optionService.addCategory(categoryDto)))
+                .created(URI.create("/api/option/category/"+optionService.addCategory(categoryDto))) // created는 201번 코드이다. headers에 저장가능하게 만드는 구문이다.
                 .body(categoryDto);
     }
-
+// @RequestMapping(value = "/categories", method = RequestMethod.GET)이랑 밑에 @GetMapping과 동일하다.
     @GetMapping("/categories")
     public ResponseEntity<?> getCategory(){
         return ResponseEntity.ok(optionService.getCategories());
