@@ -106,13 +106,12 @@
         </div>
         <button class="register-button">회원가입</button>
     </div>
-
     <script>
         class RegisterApi {
             static #instance = null;
-            static #getInstance() {
-                if(this.#instance == null) {
-                    this.#instance = new RegisterApi()
+            static getInstance() {
+                if(this.#instance == null){
+                    this.#instance = new RegisterApi();
                 }
                 return this.#instance;
             }
@@ -133,40 +132,43 @@
                     }
                 });
             }
-            
+
             duplicateUsername(username) {
+                const usernameInput = document.querySelectorAll(".register-text")[0];
+                const usernameError = document.querySelectorAll(".error-msg")[0];
+
                 $.ajax({
                     async: false,
-                    type: "post",
-                    url: "/api/account/user",
-                    contentType: "application/json",
-                    data: JSON.stringify(user),
+                    type: "get",
+                    url: "/api/account/username",
+                    data: {"username": username},
                     dataType: "json",
                     success: (response) => {
-
+                        usernameInput.classList.add("success");
+                        usernameError.textContent = "";
                     },
                     error: (errorResponse) => {
-
+                        console.log(errorResponse);
+                        usernameInput.classList.remove("success");
+                        usernameError.textContent = errorResponse.responseJSON.data.duplicate;
                     }
                 });
             }
-
         }
 
         class RegisterService {
             static #instance = null;
-            static #getInstance() {
-                if(this.#instance == null) {
-                    this.#instance = new RegisterService()
+            static getInstance() {
+                if(this.#instance == null){
+                    this.#instance = new RegisterService();
                 }
                 return this.#instance;
-            }
-        
+            } 
 
-            addEventToUsernameInput() {
+            addEventToUsernameInput(){
                 const usernameInput = document.querySelectorAll(".register-text")[0];
                 usernameInput.onblur = () => {
-                    alert("중복확인 요청");
+                    RegisterApi.getInstance().duplicateUsername(usernameInput.value);
                 }
             }
         }
@@ -174,8 +176,6 @@
         window.onload = () => {
             RegisterService.getInstance().addEventToUsernameInput();
         }
-
-
 
     </script>
 </body>
