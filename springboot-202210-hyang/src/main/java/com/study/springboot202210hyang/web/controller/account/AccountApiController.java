@@ -10,9 +10,12 @@ import com.study.springboot202210hyang.web.dto.CMRespDto;
 import com.study.springboot202210hyang.web.dto.UserDto;
 import com.study.springboot202210hyang.web.dto.UsernameDto;
 import com.study.springboot202210hyang.web.exception.CustomValidException;
+<<<<<<< HEAD
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+=======
+>>>>>>> 1aeeabefd40341cb23c6ea3adadcd5485b1fd223
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StopWatch;
@@ -46,7 +49,10 @@ public class AccountApiController {
     @GetMapping("/username")
     public ResponseEntity<?> duplicateUsername(@Valid UsernameDto usernameDto, BindingResult bindingResult) { // get요청은 객체를 전달하므로 json형태가 아니다.
         userService.duplicateUsername(usernameDto.getUsername());
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1aeeabefd40341cb23c6ea3adadcd5485b1fd223
         return ResponseEntity.ok().body(new CMRespDto<>("가입 가능한 사용자이름", true));
     }
 

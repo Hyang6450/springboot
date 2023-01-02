@@ -21,6 +21,7 @@ public class ValidationAop {
     @Pointcut("execution(* com.study.springboot202210hyang.web.controller.account.AccountApiController.*(..))")
     private void executionPointCut(){}
 
+<<<<<<< HEAD
     @Pointcut("@annotation(com.study.springboot202210hyang.aop.annotation.ValidAspect)")
     private void annotationPointCut() {}
 
@@ -31,6 +32,11 @@ public class ValidationAop {
             System.out.println(arg);
         }
 
+=======
+    @Around("executionPointCut()") // @Around는 전과 후 둘다를 의미한다. 전과 후 둘다 @Validation을 한다.
+    public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        Object[] args = proceedingJoinPoint.getArgs(); // args => 메소드 안에있는 매개변수
+>>>>>>> 1aeeabefd40341cb23c6ea3adadcd5485b1fd223
 
         System.out.println("AOP 작동함!!");
 

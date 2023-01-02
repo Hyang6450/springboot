@@ -60,10 +60,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
+<<<<<<< HEAD
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 		</dependency>
+=======
+
+
+>>>>>>> 1aeeabefd40341cb23c6ea3adadcd5485b1fd223
 	</dependencies>
 
 	<build>
